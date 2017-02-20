@@ -13,6 +13,8 @@ module.exports.buzzer = (event, context, callback) => {
     twiml.sms("Someone buzzed in!", {to: phone});
   });
 
+  twiml.hangup();
+
   const response = {
     statusCode: 200,
     headers: {
