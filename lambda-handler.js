@@ -7,7 +7,7 @@ const OWNER_NUMBERS = process.env.OWNER_NUMBERS.split(",");
 module.exports.buzzer = (event, context, callback) => {
   const twiml = new twilio.TwimlResponse();
   twiml
-    .play({digits: "www9www"});
+    .play({digits: "wwww9"});
 
   OWNER_NUMBERS.forEach((phone) => {
     twiml.sms("Someone buzzed in!", {to: phone});
