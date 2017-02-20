@@ -7,8 +7,11 @@ const OWNER_NUMBERS = process.env.OWNER_NUMBERS.split(",");
 module.exports.buzzer = (event, context, callback) => {
   const twiml = new twilio.TwimlResponse();
   twiml
-    .play({digits: "www9www99999www99999"})
-    .sms("Someone buzzed in!", {to: OWNER_NUMBERS});
+    .play({digits: "www9www"});
+
+  OWNER_NUMBERS.forEach((phone) => {
+    twiml.sms("Someone buzzed in!", {to: phone});
+  });
 
   const response = {
     statusCode: 200,
