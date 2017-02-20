@@ -1,0 +1,25 @@
+service: buzzer
+
+provider:
+  name: aws
+  runtime: nodejs4.3
+  profile: jbuck
+  stage: prod
+  region: us-east-2
+  memorySize: 128
+  environment:
+    OWNER_NUMBERS: ${env:OWNER_NUMBERS}
+    TWILIO_AUTH_TOKEN: ${env:TWILIO_AUTH_TOKEN}
+
+functions:
+  buzzer:
+    handler: lambda-handler.buzzer
+    events:
+      - http: POST /buzzer-voice-auto
+
+package:
+  exclude:
+    - "**"
+  include:
+    - lambda-handler.js
+    - node_modules/twilio/**
